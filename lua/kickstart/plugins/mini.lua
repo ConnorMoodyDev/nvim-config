@@ -2,14 +2,6 @@ return {
   { -- Collection of various small independent plugins/modules
     'echasnovski/mini.nvim',
     config = function()
-      -- Better Around/Inside textobjects
-      --
-      -- Examples:
-      --  - va)  - [V]isually select [A]round [)]paren
-      --  - yinq - [Y]ank [I]nside [N]ext [Q]uote
-      --  - ci'  - [C]hange [I]nside [']quote
-      require('mini.ai').setup { n_lines = 500 }
-
       -- Add/delete/replace surroundings (brackets, quotes, etc.)
       --
       -- - saiw) - [S]urround [A]dd [I]nner [W]ord [)]Paren
@@ -23,6 +15,32 @@ return {
       local statusline = require 'mini.statusline'
       -- set use_icons to true if you have a Nerd Font
       statusline.setup { use_icons = vim.g.have_nerd_font }
+
+      local pairs = require 'mini.pairs'
+
+      pairs.setup()
+
+      local basics = require 'mini.basics'
+      basics.setup {
+        mappings = {
+          basic = true,
+          windows = true,
+        },
+      }
+
+      local move = require 'mini.move'
+      move.setup()
+
+      require('mini.extra').setup()
+      local ai = require 'mini.ai'
+
+      ai.setup {
+        custom_textobjects = {
+          B = MiniExtra.gen_ai_spec.buffer(),
+          I = MiniExtra.gen_ai_spec.indent(),
+          L = MiniExtra.gen_ai_spec.line(),
+        },
+      }
 
       -- You can configure sections in the statusline by overriding their
       -- default behavior. For example, here we set the section for

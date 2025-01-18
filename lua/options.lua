@@ -37,7 +37,7 @@ vim.opt.smartcase = true
 vim.opt.signcolumn = 'yes'
 
 -- Decrease update time
-vim.opt.updatetime = 250
+vim.opt.updatetime = 100
 
 -- Decrease mapped sequence wait time
 -- Displays which-key popup sooner
@@ -61,5 +61,19 @@ vim.opt.cursorline = true
 
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 10
+
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.smartindent = true
+vim.opt.expandtab = true
+-- vim.opt.autoindent = true
+vim.opt.cmdheight = 1
+vim.opt.laststatus = 2
+vim.opt.wrap = false
+
+vim.opt.termguicolors = true
+
+vim.opt.wildignore:append { '*/node_modules/*', '*/.git/*', '*/vendor/*' }
 
 -- vim: ts=2 sts=2 sw=2 et
