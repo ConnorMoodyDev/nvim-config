@@ -22,7 +22,10 @@ return {
           {
             'rafamadriz/friendly-snippets',
             config = function()
-              require('luasnip.loaders.from_vscode').lazy_load()
+              local snippet_loader = require 'luasnip.loaders.from_vscode'
+
+              snippet_loader.lazy_load()
+              snippet_loader.lazy_load { paths = vim.fn.stdpath 'config' .. '/snippets' }
             end,
           },
         },

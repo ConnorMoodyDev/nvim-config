@@ -31,17 +31,19 @@ return {
       local move = require 'mini.move'
       move.setup()
 
-      require('mini.extra').setup()
-      local ai = require 'mini.ai'
-
-      ai.setup {
-        custom_textobjects = {
-          B = MiniExtra.gen_ai_spec.buffer(),
-          I = MiniExtra.gen_ai_spec.indent(),
-          L = MiniExtra.gen_ai_spec.line(),
-        },
-      }
-
+      -- require('mini.extra').setup()
+      -- local ai = require 'mini.ai'
+      -- local spec_treesitter = require('mini.ai').gen_spec.treesitter
+      -- ai.setup {
+      --   n_lines = 5000,
+      --   custom_textobjects = {
+      --     B = MiniExtra.gen_ai_spec.buffer(),
+      --     I = MiniExtra.gen_ai_spec.indent(),
+      --     L = MiniExtra.gen_ai_spec.line(),
+      --     T = { '<([%p%w]-)%f[^<%w][^<>]->.-</%1>', '^<.->().*()</[^/]->$' },
+      --   },
+      -- }
+      --
       -- You can configure sections in the statusline by overriding their
       -- default behavior. For example, here we set the section for
       -- cursor location to LINE:COLUMN

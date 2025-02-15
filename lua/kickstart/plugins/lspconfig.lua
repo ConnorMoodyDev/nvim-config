@@ -1,4 +1,4 @@
--- LSP Plugins
+-- LSP Pluginslspcon
 return {
   {
     -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
@@ -108,7 +108,7 @@ return {
 
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header.
-          map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+          -- map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
           -- The following two autocommands are used to highlight references of the
           -- word under your cursor when your cursor rests there for a little while.
@@ -210,9 +210,10 @@ return {
         },
 
         phpactor = {},
+
+        pint = {},
         -- intelephense = {},
         --
-
         lua_ls = {
           -- cmd = {...},
           -- filetypes = { ...},
@@ -244,7 +245,10 @@ return {
         'stylua', -- Used to format Lua code
         'pint',
         'prettierd',
+        'biome',
+        'pretty-php',
         'tailwindcss-language-server',
+        'blade-formatter',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 

@@ -108,5 +108,16 @@ require 'lazy-bootstrap'
 -- [[ Configure and install plugins ]]
 require 'lazy-plugins'
 
+local function load_lua_files_from(directory)
+  local scan = vim.fn.globpath(directory, '*.lua', false, true) -- Get all Lua files in directory
+  for _, file in ipairs(scan) do
+    local module_name = file:match('lua/(.+)%.lua$'):gsub('/', '.') -- Convert file path to module name
+    require(module_name)
+  end
+end
+
+-- Load all commands from custom/commands/
+load_lua_files_from(vim.fn.stdpath 'config' .. '/lua/custom/commands')
+
 -- The line beneath this is called `modeline`. See `:help modeline`
 -- vim: ts=2 sts=2 sw=2 et

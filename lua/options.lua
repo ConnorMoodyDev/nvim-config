@@ -76,4 +76,22 @@ vim.opt.termguicolors = true
 
 vim.opt.wildignore:append { '*/node_modules/*', '*/.git/*', '*/vendor/*' }
 
+vim.o.showtabline = 2
+vim.o.tabline = '%!v:lua.MyTabLine()'
+
+function _G.MyTabLine()
+  local s = ''
+  for i = 1, vim.fn.tabpagenr '$' do
+    local winnr = vim.fn.tabpagewinnr(i)
+    local buflist = vim.fn.tabpagebuflist(i)
+    local bufname = vim.fn.fnamemodify(vim.fn.bufname(buflist[winnr]), ':t') -- Get only filename
+    if bufname == '' then
+      bufname = '[No Name]'
+    end
+    s = s .. '%' .. i .. 'T' .. (i == vim.fn.tabpagenr() and '%#TabLineSel#' or '%#TabLine#') .. ' ' .. bufname .. ' '
+  end
+  return s
+end
+
+vim.opt.sessionoptions = 'curdir,folds,globals,help,tabpages,terminal,winsize'
 -- vim: ts=2 sts=2 sw=2 et
